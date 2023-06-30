@@ -1,0 +1,48 @@
+service: serverless-ts-learning
+
+frameworkVersion: "3"
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
+  - serverless-s3-local
+
+provider:
+  name: aws
+  stage: ${opt:stage, "offline"}
+  region: ${opt:region, "ap-northeast-1"}
+  runtime: nodejs18.x
+  endpointType: private
+  versionFunctions: false
+  # iam:
+  s3:
+    helloBucket:
+      name: serverless-ts-learning-bucket2
+      LifecycleConfiguration:
+        Rules:
+          - Id: Folder1
+            Prefix: folder1/
+            Status: Enabled
+            ExpirationInDays: 7
+          - Id: Folder2
+            Prefix: folder2/
+            Status: Enabled
+            ExpirationInDays: 7
+
+custom:
+  s3:
+    host: localhost
+    port: 4569
+    directory: ./tests/resources
+    bucketName: serverless-ts-learning-bucket2
+
+functions:
+  hello:
+    handler: src/functions/hello.default
+    events:
+      - s3:
+          bucket: helloBucket
+          event: s3:ObjectCreated:*
+          rules:
+            - prefix: folder1/
+            - suffix: .csv
