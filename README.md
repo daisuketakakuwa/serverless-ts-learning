@@ -1,3 +1,24 @@
+## HLD
+
+・APIGW(Private)
+　- Resource(hello)
+　　- GET /hello
+
+↑↓
+
+・VPC
+　- VPC Endpoint
+
+✅**VPC 内からプライベートに呼べるようにするために、Private な API を使う。なので、Private な APIGW 構築時には「VPC Endpoint」の指定が必要である。**
+
+✅VPC Endpoint を指定して Private な APIGW を生成すると、**Route53Alias として自動的に下記の DNS レコードを定義してくれる。**
+
+👉Public な DNS レコードなので Internet 経由で名前解決は可能だが、正常に呼び出せるのは指定の VPC 内からのアクセスのみ。
+
+```
+{rest-api-id}-{vpce-id}.execute-api.{region}.amazonaws.com
+```
+
 ## Technical Stack
 
 - Node.js 18
@@ -25,6 +46,10 @@ https://www.serverless.com/framework/docs/providers/aws/guide/iam/
 
 - `Resources`配下で作成することも可能だが、これは serverless がデプロイ時に生成する CloudFormation template に直接書くようなもの。
 - `functions.hogeFunc.events.s3`で自動生成される S3 バケットの設定をしたい場合は、`provider.s3`で設定を行う。
+
+### 4. `provider.apiGateway`は、`functions`配下の Lambda を Integrate する APIGW を構築する。
+
+- `resouces`配下で CloudFormation でハードコーディングする必要はない。
 
 #### `provider.s3`設定時の注意
 
@@ -87,5 +112,5 @@ aws  --endpoint http://localhost:4569 s3 cp tests/resources/sample.csv s3://hell
 3. Deploy to AWS
 
 ```
-npx sls deploy stage dev
+npx sls deploy --stage dev
 ```
