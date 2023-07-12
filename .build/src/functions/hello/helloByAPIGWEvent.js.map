@@ -1,0 +1,1 @@
+{"version":3,"file":"helloByAPIGWEvent.js","sourceRoot":"","sources":["../../../../src/functions/hello/helloByAPIGWEvent.ts"],"names":[],"mappings":";;;;;;;;;;;AAEA,MAAM,MAAM,GAA2B,CAAO,KAA2B,EAAE,EAAE;IAC3E,OAAO;QACL,UAAU,EAAE,GAAG;QACf,IAAI,EAAE,cAAc;KACrB,CAAC;AACJ,CAAC,CAAA,CAAC;AAEF,kBAAe,MAAM,CAAC"}

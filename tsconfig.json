@@ -5,6 +5,9 @@
     "target": "ES6",
     "outDir": ".build",
     "rootDir": "./",
-    "module": "CommonJS"
+    "module": "CommonJS",
+    "allowJs": true,
+    "sourceMap": true,
+    "esModuleInterop": true
   }
 }

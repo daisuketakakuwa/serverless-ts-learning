@@ -99,6 +99,15 @@ Default output format [None]: json
 npx sls offline start
 ```
 
+### JWT
+
+・Create JWT in https://jwt.io/
+・PEM → JWKS in https://irrte.ch/jwt-js-decode/pem2jwk.html
+
+```
+eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InRlc3QifQ.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTUxNjIzOTAyMn0.cJhvFV2N_-llnvNJLtRutGsTGxsnOwY8OvVGT-TUv9pO2LZuVGzFlOu3mPe5MZWpc_ZAhMudGnvSTPpGTWxE1yHrNu1hWfmO80R4VI83rusHeTcbhPgfnwAuqofKYZg_dYWkd5HQz1tTl062oqcnGYQ8GjXxNZI6UXdbe0Hd1SHdlg4G31h8Q9z_qChBTTjrFJcqXJNd2FbEAiX_LcD5e7aySxNi_1zq5LkONCY8qb5sNLgH-kZoazqts308GXb7zpULbSPXfcB2H3xvwXlvXCJLmpd6zVZzVK77Jxtjr5gZUV50QEsKuvBoYtofoPhfalUk8jOWT9APTf--uN9tTg
+```
+
 ### deploy a csv file to s3 bucket
 
 ```
