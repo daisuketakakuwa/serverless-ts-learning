@@ -39,20 +39,17 @@ functions:
       - http:
           path: auth
           method: get
-  # helloByS3Event:
-  #   handler: src/functions/helloByS3Event.default
-  #   events:
-  #     - s3:
-  #         bucket: helloBucket
-  #         event: s3:ObjectCreated:*
-  #         rules:
-  #           - prefix: folder1/
-  #           - suffix: .csv
-  helloByAPIGWEvent:
-    handler: src/functions/hello/helloByAPIGWEvent.default
+  helloLambdaIntegration:
+    handler: src/functions/hello/helloLambdaIntegration.default
     events:
       - http:
-          path: hello
+          path: helloNoProxy
+          method: get
+  helloLambdaProxyIntegration:
+    handler: src/functions/hello/helloLambdaProxyIntegration.default
+    events:
+      - http:
+          path: helloLambdaProxy
           method: get
 # functionsに紐づくAPIGWは、provider.apiGatewayを定義すれば
 # 自動でAPIGW作ってくれる。

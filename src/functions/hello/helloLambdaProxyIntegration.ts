@@ -1,10 +1,10 @@
 import { APIGatewayProxyEvent, APIGatewayProxyHandler } from "aws-lambda";
 
-const runner: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent) => {
+const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent) => {
   return {
     statusCode: 200,
     body: "HELLO WORLD.",
   };
 };
 
-export default runner;
+export default handler;
